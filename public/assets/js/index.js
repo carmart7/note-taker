@@ -39,7 +39,7 @@ const saveNote = (note) =>
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(note),
+    body: note,
   });
 
 const deleteNote = (id) =>
@@ -53,7 +53,7 @@ const deleteNote = (id) =>
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
-  if (activeNote.id) {
+if (activeNote.id) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
@@ -69,7 +69,7 @@ const renderActiveNote = () => {
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
-    text: noteText.value,
+    text: noteText.value
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
