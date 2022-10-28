@@ -47,7 +47,7 @@ const deleteNote = (id) =>
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-    },
+    }
   });
 
 const renderActiveNote = () => {
@@ -122,7 +122,7 @@ const renderNoteList = async (notes) => {
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
-  console.log('test');
+
   let noteListItems = [];
 
   // Returns HTML element with or without a delete button
