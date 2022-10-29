@@ -26,8 +26,7 @@ app.post('/api/notes', (req, res) => {
     note.id = uuidv4();
     let currentNotes = JSON.parse(fs.readFileSync(__dirname + '/db/db.json'));
     currentNotes.push(note);
-    fs.writeFile(`./db/db.json`, JSON.stringify(currentNotes, null, '\t'), (err) => err ? console.error(err) : console.log(`Note for ${note.title} has been written to JSON file`));
-    res.send('Success');
+    fs.writeFile(`./db/db.json`, JSON.stringify(currentNotes, null, '\t'), (err) => err ? console.error(err) : res.send('Success'));
 })
 
 app.delete('/api/notes/:id', (req, res) => {
@@ -37,8 +36,7 @@ app.delete('/api/notes/:id', (req, res) => {
             currentNotes.splice(i, 1);
         }
     }
-    fs.writeFile(`./db/db.json`, JSON.stringify(currentNotes, null, '\t'), (err) => err ? console.error(err) : console.log(`Note with id ${req.params.id} has been removed from JSON file`));
-    res.send('Success');
+    fs.writeFile(`./db/db.json`, JSON.stringify(currentNotes, null, '\t'), (err) => err ? console.error(err) : res.send('success'));
 })
 
 app.get('/*', (req, res) => {
